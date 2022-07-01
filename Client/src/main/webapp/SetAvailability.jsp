@@ -121,7 +121,7 @@
                             <label style="padding-right:40px; " class="form-check-label">Friday</label>
                         </div>
 
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Continue">
                     </form>
 
                 </div><br><br><br><br><br><br><br><br>

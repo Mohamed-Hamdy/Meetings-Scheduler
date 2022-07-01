@@ -79,11 +79,10 @@
     </div>
 </div>
 </html>
-<div class="bg-dark  p-4"></div>
+
 <div class="jumbotron marginx-10 mb-4 py-4 ">
     <h3 class="text-center text-lg-left">We are here to help!</h3>
-    <p class="text-center text-lg-left">Our customer service works
-        24/7</p>
+    <p class="text-center text-lg-left">Our customer service works 24 hours </p>
 </div>
 <div class="tm-container">
     <div class="row">
@@ -226,7 +225,7 @@
         <div class="col-lg-8 mb-2">
 
             <img src="img/contact.png" class="card-img align-self-center"
-                 style="height: 85%; min-width: 80%" alt="contact">
+                 style="height: 80%; min-width: 60%" alt="contact">
 
         </div>
 
@@ -286,6 +285,8 @@
         var sub = document.getElementById("subject").value;
         var message = document.getElementById("message-text").value;
         var emailTo = document.getElementById("emailTo").value;
+        var useremail = emailTo;
+        message = message + " this email Sent From " + useremail;
         var emailFrom = document.getElementById("emailFrom").value;
         //document.getElementById("demo").innerHTML = "From Script";
 
@@ -293,7 +294,7 @@
 
             // localhost -> 93cf4e1f-9b98-4bfe-a19e-43961df8334e
             SecureToken: "ae5fbaf1-a872-417c-89cd-e47433eb965e",
-            To: emailTo,
+            To: "mohamed547754@gmail.com",
             From: emailFrom,
             Subject: sub,
             Body: message

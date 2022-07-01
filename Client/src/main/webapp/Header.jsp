@@ -53,14 +53,15 @@
                             <!--<a class="nav-item nav-link " href="Index.jsp#start"></a>-->
 
                             <% if (session.getAttribute("Userid") != null ){ %>
-                                <a class="nav-item nav-link " href="meetings.jsp">Home</a>
-                                <a class="nav-item nav-link " href="Rooms.jsp">Availability</a>
-                                <a class="nav-item nav-link" href="FindReservation.jsp">Help</a>
+                                <a class="nav-item nav-link " href="index.jsp">Home</a>
+                                <a class="nav-item nav-link " href="meetings.jsp">Meetings</a>
+                                <a class="nav-item nav-link " href="availbilityList.jsp">Availability</a>
+                                <!--<a class="nav-item nav-link" href="help.jsp">Help</a>-->
                                 <a class="nav-item nav-link" href="Contact.jsp">Contact</a>
                             <% } else { %>
                                 <a class="nav-item nav-link " href="index.jsp">Home</a>
-                                <a class="nav-item nav-link" href="FindReservation.jsp">Help</a>
                                 <a class="nav-item nav-link" href="Contact.jsp">Contact</a>
+                                <!--<a class="nav-item nav-link" href="help.jsp">Help</a>-->
                             <% } %>
 
                         </div>
@@ -126,6 +127,7 @@
 
 </header>
 
+<div class="bg-dark  p-4"></div>
 
 </body>
 <div class="modal fade" id="logInModal" tabindex="-1" role="dialog"

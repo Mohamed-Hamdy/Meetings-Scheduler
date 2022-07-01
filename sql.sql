@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`user` (
   `type` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 46
+AUTO_INCREMENT = 53
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`meeting` (
     FOREIGN KEY (`user_id`)
     REFERENCES `meetingscheduler`.`user` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 18
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -86,13 +86,14 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`attendee` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NULL DEFAULT NULL,
   `name` VARCHAR(45) NULL DEFAULT NULL,
-  `type` VARCHAR(45) NULL DEFAULT NULL,
-  `Meeting_id` INT NOT NULL,
+  `meeting_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_Attendee_Meeting1_idx` (`Meeting_id` ASC) VISIBLE,
-  CONSTRAINT `fk_Attendee_Meeting1`
-    FOREIGN KEY (`Meeting_id`)
-    REFERENCES `meetingscheduler`.`meeting` (`id`))
+  INDEX `fk_attendee_meeting1_idx` (`meeting_id` ASC) VISIBLE,
+  CONSTRAINT `fk_attendee_meeting1`
+    FOREIGN KEY (`meeting_id`)
+    REFERENCES `meetingscheduler`.`meeting` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -103,12 +104,14 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `meetingscheduler`.`calender` (
   `idCalender` INT NOT NULL,
-  `Meeting_id` INT NOT NULL,
+  `meeting_id` INT NOT NULL,
   PRIMARY KEY (`idCalender`),
-  INDEX `fk_Calender_Meeting1_idx` (`Meeting_id` ASC) VISIBLE,
-  CONSTRAINT `fk_Calender_Meeting1`
-    FOREIGN KEY (`Meeting_id`)
-    REFERENCES `meetingscheduler`.`meeting` (`id`))
+  INDEX `fk_calender_meeting1_idx` (`meeting_id` ASC) VISIBLE,
+  CONSTRAINT `fk_calender_meeting1`
+    FOREIGN KEY (`meeting_id`)
+    REFERENCES `meetingscheduler`.`meeting` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -119,21 +122,19 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `meetingscheduler`.`meetingroom` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `Name` VARCHAR(45) NULL DEFAULT NULL,
-  `Type` VARCHAR(45) NULL DEFAULT NULL,
-  `DurationInMinutes` INT NULL DEFAULT NULL,
-  `RoomAvalablity` TINYINT NULL DEFAULT NULL,
-  `Meeting_id` INT NOT NULL,
   `Attendee_id` INT NOT NULL,
+  `meeting_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_MeetingRoom_Meeting_idx` (`Meeting_id` ASC) VISIBLE,
   INDEX `fk_MeetingRoom_Attendee1_idx` (`Attendee_id` ASC) VISIBLE,
+  INDEX `fk_meetingroom_meeting1_idx` (`meeting_id` ASC) VISIBLE,
   CONSTRAINT `fk_MeetingRoom_Attendee1`
     FOREIGN KEY (`Attendee_id`)
     REFERENCES `meetingscheduler`.`attendee` (`id`),
-  CONSTRAINT `fk_MeetingRoom_Meeting`
-    FOREIGN KEY (`Meeting_id`)
-    REFERENCES `meetingscheduler`.`meeting` (`id`))
+  CONSTRAINT `fk_meetingroom_meeting1`
+    FOREIGN KEY (`meeting_id`)
+    REFERENCES `meetingscheduler`.`meeting` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -159,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`setavailabledays` (
     FOREIGN KEY (`user_id`)
     REFERENCES `meetingscheduler`.`user` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 8
+AUTO_INCREMENT = 15
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 

@@ -5,13 +5,15 @@
 package com.example.client.Program;
 
 /**
- *
  * @author Mohamed Hamdy
  */
 public class Attendee {
     private int id;
     private String name;
+
+
     private String email;
+    private int meetingid;
 
     public int getId() {
         return id;
@@ -36,8 +38,23 @@ public class Attendee {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Override
     public String toString() {
-        return "Attendee{" + "id=" + id + ", name=" + name + ", email=" + email+ '}';
+        return "Attendee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", meetingid=" + meetingid +
+                '}';
     }
+
+    public int getMeetingid() {
+        return meetingid;
+    }
+
+    public void setMeetingid(int meetingid) {
+        this.meetingid = meetingid;
+    }
+
 }

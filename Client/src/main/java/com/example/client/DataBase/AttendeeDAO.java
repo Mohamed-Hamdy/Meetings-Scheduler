@@ -5,39 +5,38 @@ package com.example.client.DataBase;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 import com.example.client.Program.Attendee;
 import com.example.client.Program.MeetingRoom;
-
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.util.ArrayList;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import static java.lang.System.out;
+
 /**
- *
  * @author AA
  */
-@WebServlet(urlPatterns = {"/MeetingRoomDAO"})
-public class MeetingRoomDAO extends HttpServlet {
+@WebServlet(urlPatterns = {"/AttendeeDAO"})
+public class AttendeeDAO extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     //out.println(roomNumber);
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -49,7 +48,7 @@ public class MeetingRoomDAO extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MeetingRoomDAO</title>");
+            out.println("<title>Servlet AttendeeDAO</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("</body>");
@@ -58,13 +57,14 @@ public class MeetingRoomDAO extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -75,10 +75,10 @@ public class MeetingRoomDAO extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -96,8 +96,8 @@ public class MeetingRoomDAO extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public MeetingRoom getMeetingRoom(int roomNumber) {
-        MeetingRoom room = new MeetingRoom();
+    public Attendee getAttendeebyId(int id) {
+        Attendee List = new Attendee();
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -108,22 +108,24 @@ public class MeetingRoomDAO extends HttpServlet {
 
             con = DriverManager.getConnection(url, user, password);
 
-            // get values from MeetingRoom
-            String query = "SELECT r.meeting_id, r.attendee_id"
-                    + "FROM meetingroom AS r "
+            // get values from attendee
+            String query = "SELECT r.email, r.name , r.meeting_id"
+                    + "FROM attendee AS r "
                     + "WHERE r.id= ?";
 
             //int Rows = Stmt.executeUpdate(line);
             PreparedStatement pst = con.prepareStatement(query);
-            pst.setInt(1, roomNumber);
+            pst.setInt(1, id);
             pst.execute();
             ResultSet rs = pst.getResultSet();
 
             while (rs.next()) {
-                room.setId(roomNumber);
+                List.setId(id);
 
-                room.setMeeting_id(rs.getInt("meeting_id"));
-                room.setAttendee_id(rs.getInt("attendee_id"));
+                List.setEmail(rs.getString("email"));
+                List.setName(rs.getString("name"));
+                List.setMeetingid(rs.getInt("meeting_id"));
+
 
             }
 
@@ -131,14 +133,14 @@ public class MeetingRoomDAO extends HttpServlet {
             pst.close();
 
         } catch (Exception ex) {
-            System.out.println(ex);
+            out.println(ex);
         }
-        return room;
+        return List;
     }
-    
-    
-    public MeetingRoom getRoom_by_meeting_id(int MeetingId) {
-        MeetingRoom room = new MeetingRoom();
+
+
+    public Attendee getAttendee_by_meeting_id(int MeetingId) {
+        Attendee List = new Attendee();
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -149,9 +151,9 @@ public class MeetingRoomDAO extends HttpServlet {
 
             con = DriverManager.getConnection(url, user, password);
 
-            // get values from MeetingRoom
-            String query = "SELECT  r.id, r.attendee_id"
-                    + "FROM meetingroom AS r "
+            // get values from attendee
+            String query = "SELECT r.id , r.email, r.name"
+                    + "FROM attendee AS r "
                     + "WHERE r.meeting_id= ?";
 
             //int Rows = Stmt.executeUpdate(line);
@@ -161,22 +163,21 @@ public class MeetingRoomDAO extends HttpServlet {
             ResultSet rs = pst.getResultSet();
 
             while (rs.next()) {
-                //out.println(rs.getString("category_name"));
-                room.setMeeting_id(MeetingId);
-                room.setId(rs.getInt("id"));
-                room.setAttendee_id(rs.getInt("attendee_id"));
-
+                List.setId(rs.getInt("id"));
+                List.setEmail(rs.getString("email"));
+                List.setName(rs.getString("name"));
+                List.setMeetingid(MeetingId);
             }
 
             con.close();
             pst.close();
 
         } catch (Exception ex) {
-            System.out.println(ex);
+            out.println(ex);
         }
-        return room;
+        return List;
     }
-    public void addMeetingRoom(MeetingRoom Room) {
+    public void addAttendee(Attendee List) {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -186,38 +187,24 @@ public class MeetingRoomDAO extends HttpServlet {
             Connection con = null;
 
             con = DriverManager.getConnection(url, user, password);
-
-                String query = "INSERT into meetingroom(meeting_id, attendee_id) values (?,?)";
+            //out.println(List.getEmail() + " " + List.getName() + " " + List.getMeetingid());
+            String query = "INSERT into attendee(email,name,meeting_id) values (?,?,?)";
             PreparedStatement pst = con.prepareStatement(query);
-            pst.setInt(1, Room.getMeeting_id());
-            pst.setInt(2, Room.getAttendee_id());
+            pst.setString(1, List.getEmail());
+            pst.setString(2, List.getName());
+            pst.setInt(3,List.getMeetingid());
             pst.executeUpdate();
             con.close();
             pst.close();
+
         } catch (Exception ex) {
-            System.out.println(ex);
+            out.println(ex);
         }
     }
 
 }
-//public void addRoomType(RoomType newRoomType) {
-//		connect();
-//		
-//		try {
-//			String query = "INSERT into room_type values (?,?,?)";
-//			PreparedStatement pst = con.prepareStatement(query);
-//			pst.setString(1, newRoomType.getCategory());
-//			pst.setDouble(2, newRoomType.getPricePerNight());
-//			pst.setInt(3, newRoomType.getMaxGuestAAllowance());
-//			pst.executeUpdate();
-//			con.close();
-//			pst.close();
-//			
-//		} catch (Exception ex) {
-//			System.out.println(ex);
-//		}
-//	}
-//
+
+
 //	public void updateCategoryName(String categoryName, String newName) {
 //		connect();
 //		

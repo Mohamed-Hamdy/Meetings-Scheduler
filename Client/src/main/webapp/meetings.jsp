@@ -19,9 +19,14 @@
 </head>
 <body class="themeColor">
 <jsp:include page="Header.jsp" flush="true"/>
-<div class="container">
-    <div class="w-100">
-        <h4>Our Meetings</h4>
+
+<div class="container" style="padding-top:20px; ">
+    <div class="w-100" style="position: relative; ">
+        <div style=" position: absolute; font-size: 25px;">Our Meetings</div>
+        <div class="text-right" style="padding-bottom:25px; ">
+
+            <button class="btn btn-primary" onclick="window.location='CreateMeeting.jsp'">Create Meeting</button>
+        </div>
     </div>
 
     <%
@@ -89,8 +94,11 @@
 
                 //String uid = meetingArray.get(i).getUserId();
                 int meetingid = meetingArray.get(i).getId();
-                //String[] detArray = hDetails.split("\\.");
-                    if(id_session != null) {
+                HttpSession meetingsession = request.getSession();
+                meetingsession.removeAttribute("error");
+                meetingsession.setAttribute("meetingid", meetingid);
+
+                if(id_session != null) {
                         //out.println(userid + " " + meetingid);
                         out.println("<div class=\"card mb-4\">");
                         out.println("<div class=\"card-body\">");
@@ -99,7 +107,7 @@
                         out.println("<h6 class=\"card-text mb-2 text-muted\"> Type : " + meetingtype + " Meeting</h5>");
                         out.println("<h6 class=\"card-title mb-2 text-muted\"> TimeZone : " + Timezone + "</h6>");
                         //out.println("<h6 class=\"card-title mb-2 text-muted\"> userid : " + userid + "</h6>");
-                        out.println("<div class=\"text-right\"> <button href=\"#\" class=\"btn btn-primary \">Go somewhere</button></div>");
+                        out.println("<div class=\"text-right\"> <button href=\"#\" class=\"btn btn-primary \">Show Details</button></div>");
                         out.println("</div>");
                         out.println("</div>");
                     }
@@ -133,7 +141,7 @@
 
     %>
 </div>
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="Footer.jsp" flush="true"/>
 <script src="JS/rooms.js"></script>
 

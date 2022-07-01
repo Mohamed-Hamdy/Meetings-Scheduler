@@ -81,8 +81,10 @@ public class createmeeting extends HttpServlet {
             MeetingDAO newGD = new MeetingDAO();
 
             newGD.addMeeting(meeting);
+
+
             Con.close();
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("meetingroom.jsp");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

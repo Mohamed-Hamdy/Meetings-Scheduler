@@ -19,7 +19,7 @@
 <jsp:include page="Header.jsp" flush="true"/>
 <div class="tm-container my-3">
     <div class="row">
-        <div class="col-lg-8  card bg-light order-lg-first order-last" style="margin-left: 15%;">
+        <div class="col-lg-8  card bg-light order-lg-first order-last" style="margin-top:45px; margin-left: 15%;">
             <form name="gInfo" class="d-flex flex-column needs-validation"
                   style="height: 100%;" action="createmeeting" method="get"
                   novalidate>
@@ -128,13 +128,14 @@
                 </div>
 
                 <div class="my-auto w-100 ">
-                    <button type="hidden" class="btn btn-primary btn-block mb-2">Submit
+                    <button type="hidden" class="btn btn-primary btn-block mb-2">Create Meeting
                     </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<br><br>
 <jsp:include page="Footer.jsp" flush="true"/>
 <script src="JS/booking.js"></script>
 
