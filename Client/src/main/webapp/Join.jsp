@@ -98,7 +98,7 @@
                             <div class="invalid-feedback">Please provide a valid Address.</div>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputpassword"style="font-weight: bold;">Password</label>
+                            <%--@declare id="inputpassword"--%><label for="inputpassword"style="font-weight: bold;">Password</label>
                             <input type="password"
                                    class="form-control" id="password" placeholder="Enter Password"
                                    name="password" required>

@@ -10,44 +10,6 @@ $('#contactForm').on('show.bs.modal', function(event) {
 
 })
 
-//Email sender 
-
-function EmailSender() {
-	var sub = document.getElementById("subject").value;
-	var message = document.getElementById("message-text").value;
-	var emailTo = document.getElementById("emailTo").value;
-	if ((sub == null || sub == "") ||
-
-	(message == null || message == "")) {
-
-		alert("Please enter valid information");
-		return false;
-	} else {
-		$('#processing').modal('show');
-		$('#contactForm').modal('hide');
-		$.ajax({
-			url : 'EmailSender',
-			method : 'POST',
-			data : {
-				'sub' : sub,
-				'message' : message,
-				'emailTo' : emailTo
-			},
-			success : function(resultText) {
-
-				$('#processing').modal('hide');
-				$('#emailSent').modal('show');
-
-			},
-			error : function(jqXHR, exception, errorThrown) {
-				console.log('Error occured!!');
-				$('#contactForm').modal('hide');
-
-			}
-
-		});
-	}
-}
 
 //maps
 

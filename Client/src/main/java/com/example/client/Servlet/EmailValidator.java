@@ -81,6 +81,7 @@ public class EmailValidator extends HttpServlet {
                     String msg = "";
                     HttpSession session = request.getSession();
                     session.setAttribute("ValidatorEmailMSG", msg);
+
                 }
                 con.close();
                 pstmt.close();

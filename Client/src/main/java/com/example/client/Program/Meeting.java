@@ -6,18 +6,25 @@ import java.util.List;
 public class Meeting {
 
     private int id;
-    private String name;
-    private String MeetingUrl;
+    private String Timezone;
+    private String Date;
 
+
+    private String Time;
+    private String Repeat;
     private String Description;
-    private Date start;
-    private Date end;
-    private int capacity;
+    private String meetingtype;
     private boolean Meetingavaliablity;
     private int tinyIntTranslate;
 
+    private String Title;
+
+    private String MeetingUrl;
+    private String Duration;
+
+
     private int adminId;
-    private int userId;
+    private String userId;
 
     public Meeting() {
         super();
@@ -31,44 +38,94 @@ public class Meeting {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getMeetingtype() {
+        return meetingtype;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMeetingtype(String meetingtype) {
+        this.meetingtype = meetingtype;
+    }
+
+    public String getTimezone() {
+        return Timezone;
+    }
+
+    public void setTimezone(String timezone) {
+        Timezone = timezone;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public String getRepeat() {
+        return Repeat;
+    }
+
+    public void setRepeat(String repeat) {
+        Repeat = repeat;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 
     public String getMeetingUrl() {
         return MeetingUrl;
     }
 
-    public void setMeetingUrl(String MeetingUrl) {
-        this.MeetingUrl = MeetingUrl;
+
+
+    public void setMeetingUrl(String meetingUrl) {
+        MeetingUrl = meetingUrl;
     }
 
-    public Date getStart() {
-        return start;
+    public String getDuration() {
+        return Duration;
     }
 
-    public void setStart(Date start) {
-        this.start = start;
+    public void setDuration(String duration) {
+        Duration = duration;
     }
 
-    public Date getEnd() {
-        return end;
+    public int getAdminId() {
+        return adminId;
     }
 
-    public void setEnd(Date end) {
-        this.end = end;
+    public void setAdminId(int adminId) {
+        this.adminId = adminId;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public boolean isMeetingavaliablity() {
@@ -77,6 +134,25 @@ public class Meeting {
 
     public void setMeetingavaliablity(boolean Meetingavaliablity) {
         this.Meetingavaliablity = Meetingavaliablity;
+    }
+
+    @Override
+    public String toString() {
+        return "Meeting{" +
+                "id=" + id +
+                ", Timezone='" + Timezone + '\'' +
+                ", Date=" + Date +
+                ", Time='" + Time + '\'' +
+                ", Repeat='" + Repeat + '\'' +
+                ", Description='" + Description + '\'' +
+                ", meetingtype='" + meetingtype + '\'' +
+                ", Meetingavaliablity=" + Meetingavaliablity +
+                ", Title='" + Title + '\'' +
+                ", MeetingUrl='" + MeetingUrl + '\'' +
+                ", Duration=" + Duration +
+                ", adminId=" + adminId +
+                ", userId=" + userId +
+                '}';
     }
 
     public int getmeetingTinyIntTranslate() {
@@ -97,36 +173,6 @@ public class Meeting {
         } else if (tinyIntTranslate == 0) {
             this.Meetingavaliablity = false;
         }
-    }
-
-    public String getDescription() {
-        return Description;
-    }
-
-    public void setDescription(String Description) {
-        this.Description = Description;
-    }
-
-    public int getAdminId() {
-        return adminId;
-    }
-
-    public void setAdminId(int adminId) {
-        this.adminId = adminId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-    
-    @Override
-    public String toString() {
-        return "Meeting{" + "id=" + id + ", name=" + name + ", MeetingUrl=" + MeetingUrl + ", Description=" + Description + ", start=" + start + ", end=" + end + ", capacity=" + capacity + ", Meetingavaliablity=" + Meetingavaliablity + ", tinyIntTranslate=" + tinyIntTranslate + ", adminId=" + adminId + ", userId=" + userId + '}';
     }
 
 }

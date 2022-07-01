@@ -1,8 +1,8 @@
 <footer class="tm-footer bg-dark ">
-	<div class="tm-container bg-dark text-white text-left">
+	<div class="tm-container bg-dark text-white text-left" >
 		<div class="form-row">
 			<div class="col-sm-3">
-				<h4>Hotel Patagonia</h4>
+				<h4>Meeting's Calendly Community</h4>
 				<p>About</p>
 				<p>Patagonia Rewards</p>
 				<p>Site Map</p>

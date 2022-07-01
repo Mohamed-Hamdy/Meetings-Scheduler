@@ -65,10 +65,9 @@ img {
 }
 
 .tm-footer {
+
 	background: #fff;
 	text-align: center;
-	padding: 20px;
-	margin-top: 10px;
 }
 
 
@@ -293,7 +292,7 @@ canvas {
 }
 
 .themeColor {
-	background-image: linear-gradient(#fff, #ddf6ff);
+	/background-image: linear-gradient(#fff, #ddf6ff);
 }
 
 .themeColor-nav {

@@ -12,20 +12,20 @@
     </head>
 
     <body>
-        <!--	<div class="parallax-window" data-parallax="scroll" data-speed="0.2"
-                        data-natural-width="1200" data-image-src="img/forest.jpg"
+        	<div class="parallax-window" data-parallax="scroll" data-speed="0.2"
+                        data-natural-width="1200"   data-image-src="img/index page/meeting.jpg"
                         iosFix="true" androidFix="true" zIndex="-10">
                         <section class="sectionParallax">
                                 <ul class="heroText">
                                         <li class="scroll " data-rateY="1" data-rateX="-1"
-                                                data-direction="horizontal">hotel</li>
-                                        <li class="scroll " data-rate="1" data-direction="vertical">Patagonia</li>
+                                                data-direction="horizontal">Meetings</li>
+                                        <li class="scroll " data-rate="1" data-direction="vertical">Calendrly</li>
                                         <li class="scroll " data-rateY="1" data-rateX="1"
-                                                data-direction="horizontal">boutique</li>
+                                                data-direction="horizontal">Community</li>
         
                                 </ul>
                         </section>
-                </div>-->
+                </div>
 
         <jsp:include page="Header.jsp" flush="true" />
 

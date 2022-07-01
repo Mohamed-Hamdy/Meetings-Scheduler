@@ -8,11 +8,6 @@ package com.example.client.Servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.SecureRandom;
-import com.email.durgesh.Email;
-
-import com.example.client.DataBase.GuestDAO;
-import com.example.client.Program.Guest;
-import com.example.client.Program.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -166,7 +161,7 @@ public class NewGuest extends HttpServlet {
                         session.setAttribute("userType", userType);
                         session.setAttribute("country", country);
                         session.setAttribute("password", pass);
-                        response.sendRedirect("index.jsp");
+                        response.sendRedirect("SetAvailability.jsp");
                         //out.print("good");
                     } else {
                         String error = "e";

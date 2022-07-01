@@ -5,6 +5,7 @@ package com.example.client.DataBase;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 import com.example.client.Program.Meeting;
 import com.example.client.Program.MeetingRoom;
 import jakarta.servlet.ServletException;
@@ -15,15 +16,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+
+import static java.lang.System.out;
 
 
 /**
- *
  * @author AA
  */
 @WebServlet(urlPatterns = {"/HotelDAO"})
@@ -33,10 +31,10 @@ public class MeetingDAO extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     //out.println(roomNumber);
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -58,13 +56,14 @@ public class MeetingDAO extends HttpServlet {
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -75,10 +74,10 @@ public class MeetingDAO extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -96,7 +95,7 @@ public class MeetingDAO extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    public Meeting getHotel(int meetingNumber) {
+    public Meeting getMeeting(int meetingNumber) {
         Meeting meeting = new Meeting();
 
         try {
@@ -119,29 +118,79 @@ public class MeetingDAO extends HttpServlet {
             while (rs.next()) {
                 //out.println(rs.getString("category_name"));
                 meeting.setId(meetingNumber);
-                meeting.setName(rs.getString("name"));
-                meeting.setMeetingUrl(rs.getString("MeetingUrl"));
-                meeting.setmeetingTinyIntToIsAvailable(rs.getInt("MeetingAvaliablity"));
 
-                meeting.setStart(rs.getDate("Start"));
-                meeting.setEnd(rs.getDate("End"));
-                meeting.setDescription(rs.getString("Description"));
-                meeting.setCapacity(rs.getInt("Capacity"));
-                meeting.setAdminId(rs.getInt("Admin_id"));
-                meeting.setAdminId(rs.getInt("user_id"));
-                
+                meeting.setTimezone(rs.getString("Timezone"));
+                meeting.setDate(rs.getString("meetingdate"));
+                meeting.setTime(rs.getString("meetingtime"));
+
+                meeting.setRepeat(rs.getString("meetingrepeat"));
+                meeting.setDescription(rs.getString("meetingdescription"));
+                meeting.setmeetingTinyIntToIsAvailable(rs.getInt("MeetingAvaliablity"));
+                meeting.setMeetingtype(rs.getString("meetingtype"));
+
+                meeting.setTitle(rs.getString("Title"));
+                meeting.setMeetingUrl(rs.getString("meetingurl"));
+                meeting.setDuration(rs.getString("Duration"));
+
+                meeting.setUserId(rs.getString("user_id"));
             }
 
             con.close();
             pst.close();
 
         } catch (Exception ex) {
-            System.out.println(ex);
+            out.println(ex);
         }
         return meeting;
     }
 
-    
+    public void addMeeting(Meeting meeting) {
+        try {
+            //out.println("From add meeting");
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/meetingscheduler";
+            String user = "root";
+            String password = "root";
+            Connection con = null;
+            //out.println(meeting.getmeetingTinyIntTranslate());
+
+            con = DriverManager.getConnection(url, user, password);
+            /*
+            out.println(meeting.getTimezone() + " " + meeting.getDate() + " "+meeting.getTime() );
+            out.println();
+            out.println(meeting.getRepeat()+" "+  meeting.getDescription()+ " "+ meeting.getmeetingTinyIntTranslate() + " " + meeting.getTitle() + "  ");
+            out.println();
+            out.println(meeting.getMeetingUrl() + " " + meeting.getDuration() + "  "+ meeting.getMeetingtype() + "  " + meeting.getUserId());
+             */
+            try (PreparedStatement pstmt = con.prepareStatement(
+                    "INSERT INTO meeting(Timezone,meetingdate,meetingtime,meetingrepeat,meetingdescription,MeetingAvaliablity,Title,meetingurl,Duration,meetingtype,user_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)")) {
+
+                pstmt.setString(1, meeting.getTimezone());
+                pstmt.setString(2, meeting.getDate());
+                pstmt.setString(3, meeting.getTime());
+                pstmt.setString(4, meeting.getRepeat());
+                pstmt.setString(5, meeting.getDescription());
+                pstmt.setInt(6, meeting.getmeetingTinyIntTranslate());
+                pstmt.setString(7, meeting.getTitle());
+
+                pstmt.setString(8, meeting.getMeetingUrl());
+                pstmt.setString(9, meeting.getDuration());
+                pstmt.setString(10, meeting.getMeetingtype());
+                pstmt.setString(11, meeting.getUserId());
+                pstmt.executeUpdate();
+                pstmt.close();
+
+            }
+            //out.println("after insert");
+
+            con.close();
+
+        } catch (Exception ex) {
+            out.println(ex);
+        }
+    }
+
+
 //    public ArrayList<Meeting> checkFunction(PrintWriter out, Date desiredCheckIn, Date desiredCheckOut, String location, int numberOfGuest, String filter) {
 //
 ////        out.println("From HotelDAO_function");

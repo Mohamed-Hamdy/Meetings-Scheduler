@@ -66,7 +66,7 @@ public class EditProfile extends HttpServlet {
             String username = request.getParameter("username");
             String country = request.getParameter("country");
             String password = request.getParameter("password");
-            out.println("ssssss");
+            //out.println("ssssss");
 
             PreparedStatement ps = Con.prepareStatement(
                     "UPDATE user SET firstname = ?, lastname = ?,  username = ? , address = ? , country = ? ,  phone = ?, password = ? WHERE id = ? ");
