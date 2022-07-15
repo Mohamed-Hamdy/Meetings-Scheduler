@@ -9,7 +9,7 @@ public class Meeting {
     private String Timezone;
     private String Date;
 
-
+    private String Capacity;
     private String Time;
     private String Repeat;
     private String Description;
@@ -98,7 +98,13 @@ public class Meeting {
         return MeetingUrl;
     }
 
+    public String getCapacity() {
+        return Capacity;
+    }
 
+    public void setCapacity(String capacity) {
+        Capacity = capacity;
+    }
 
     public void setMeetingUrl(String meetingUrl) {
         MeetingUrl = meetingUrl;

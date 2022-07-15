@@ -41,12 +41,11 @@ public class meetingroomservlet extends HttpServlet {
 
             //out.println("test aaa5");
             //Stmt = Con.createStatement();
-            //Select_Stmt = Con.createStatement();
+            String meetingtype = request.getSession().getAttribute("meetingtype").toString();
+            String meetingcapacity = request.getSession().getAttribute("meetingcapacity").toString();
 
-            String name = request.getParameter("name");
-            String email = request.getParameter("mail");
+
             //out.println("test");
-            //out.println(name + " " + email);
 
 
             //String id_session = request.getSession().getAttribute("Userid").toString();
@@ -70,17 +69,42 @@ public class meetingroomservlet extends HttpServlet {
             //out.print("Meeting id = " + meetingID);
             // add participants to attendee table
             AttendeeDAO object = new AttendeeDAO();
-            //out.println("222");
-
             Attendee participant = new Attendee();
-            //out.println("0");
 
-            participant.setName(name);
-            participant.setEmail(email);
-            participant.setMeetingid(meetingID);
-            //out.println("1");
-            object.addAttendee(participant);
+            if(meetingtype.equals("One to One")){
+                String name = request.getParameter("name");
+                String email = request.getParameter("mail");
 
+                participant.setName(name);
+                participant.setEmail(email);
+                participant.setMeetingid(meetingID);
+                object.addAttendee(participant);
+
+
+            }else{
+                String name = request.getParameter("name");
+                String email = request.getParameter("mail");
+
+                participant.setName(name);
+                participant.setEmail(email);
+                participant.setMeetingid(meetingID);
+                object.addAttendee(participant);
+                //out.println("Done name");
+
+                for(int i = 2; i <= Integer.parseInt(meetingcapacity); i++){
+                    participant = new Attendee();
+                    String varName = "name" + i;
+                    String varMail = "mail" + i;
+
+                    participant.setName(request.getParameter(varName));
+                    participant.setEmail(request.getParameter(varMail));
+                    participant.setMeetingid(meetingID);
+
+                    object.addAttendee(participant);
+
+                }
+
+            }
             // add room info to meetingroom table
             //out.println("1");
             MeetingRoom room = new MeetingRoom();

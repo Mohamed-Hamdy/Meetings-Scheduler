@@ -51,20 +51,21 @@ public class createmeeting extends HttpServlet {
 
             String repeat = request.getParameter("repeat");
             String meetingtype = request.getParameter("meetingtype");
-
-
             String id_session = request.getSession().getAttribute("Userid").toString();
-            //out.println(timezone + " " + Date + "  ");
-            //out.println(time + " " + title + "  ");
-            //out.println(description + " " + duration + "  ");
-            //out.println(repeat + " " + meetingtype + "  " + id_session );
 
             //out.println("id seesion " + id_session);
             //String uname = String.valueOf(session.getAttribute("username"));
 
 
             String meetingUrl = "http://meetingscalendly.com/" + timezone + "/" + title + "/meet0" + id_session + "ing/";
-            //out.print("before insert");
+            String meetingCapacity;
+            if(meetingtype.equals("One to One")){
+                meetingCapacity = "2";
+            }else{
+                meetingCapacity = request.getParameter("add_fields_placeholderValue");
+
+            }
+
             Meeting meeting;
             meeting = new Meeting();
             meeting.setTimezone(timezone);
@@ -78,10 +79,21 @@ public class createmeeting extends HttpServlet {
             meeting.setMeetingUrl(meetingUrl);
             meeting.setmeetingTinyIntToIsAvailable(1);
             meeting.setUserId(id_session);
+            meeting.setCapacity(meetingCapacity);
             MeetingDAO newGD = new MeetingDAO();
 
             newGD.addMeeting(meeting);
 
+            HttpSession session = request.getSession();
+            session.removeAttribute("error");
+            session.setAttribute("meetingtype", meetingtype);
+            session.setAttribute("meetingcapacity", meetingCapacity);
+            session.setAttribute("duration", duration);
+            session.setAttribute("repeat", repeat);
+            session.setAttribute("time", time);
+            session.setAttribute("title", title);
+            session.setAttribute("timezone", timezone);
+            session.setAttribute("Date", Date);
 
             Con.close();
             response.sendRedirect("meetingroom.jsp");

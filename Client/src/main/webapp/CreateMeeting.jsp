@@ -49,23 +49,24 @@
                         <div class="invalid-feedback">What is your Timezone?</div>
 
                     </div>
+
                     <div class="form-group col-md-6">
-                        <label for="Date">Date</label>
+                        <%--@declare id="inputdate4"--%><label for="inputDate4">Date</label>
                         <input type="date"
-                               class="form-control" id="Date"
+                               class="form-control" id="inputDate4"
                                name="Date"
                                placeholder="YYYY-MM-DD" value=""
                                required>
                         <div class="valid-feedback">Good job!</div>
-                        <div class="invalid-feedback">Don't forget meeting Date.
+                        <div class="invalid-feedback">This Slot is Registered Before.
                         </div>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <%--@declare id="time"--%><label for="Time">Time</label>
+                        <%--@declare id="time"--%><label for="inputTime4">Time</label>
                         <input type="time"
-                               class="form-control" id="inputEmail4"
+                               class="form-control" id="inputTime4"
                                name="time"
                                placeholder="HH:MM"
                                value="" required>
@@ -100,11 +101,12 @@
                         <label for="inputDuration">Duration</label>
                         <input type="number"
                                class="form-control" id="inputDuration" name="duration"
-                               value="" placeholder="Enter meeting duration in Minutes"
+                               value="" placeholder="Enter Meeting Duration in Minutes"
+                               min="30" max="120"
                                required>
 
                         <div class="valid-feedback">Right on!</div>
-                        <div class="invalid-feedback">enter valid duration?
+                        <div class="invalid-feedback">min 30 Minutes max 120 Minutes
                         </div>
 
                     </div>
@@ -118,12 +120,26 @@
                             <option value="Monthly">Monthly</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-8">
                         <%--@declare id="inputtype"--%><label for="inputtype">Meeting Type</label>
-                        <select name="meetingtype" class="form-control" aria-label="Default select example">
+                        <select name="meetingtype" id="meetingtype" class="form-control" aria-label="Default select example">
                             <option selected>One to One</option>
                             <option value="Team">Team</option>
                         </select>
+                    </div>
+
+                    <div class="form-group col-md-12" id="add_fields_placeholderdiv">
+                        <label for="inputDuration">Meeting Capacity</label>
+
+                        <input type="number"
+                               class="form-control" name="add_fields_placeholderValue" id="add_fields_placeholderinput"
+                               value="2" placeholder="Enter Your Meeting Capacity" min="2" max="50"
+                               required>
+
+                        <div class="valid-feedback">Good</div>
+                        <div class="invalid-feedback">Min 3 participant max 50 participant
+                        </div>
+
                     </div>
                 </div>
 
@@ -137,8 +153,33 @@
 </div>
 <br><br>
 <jsp:include page="Footer.jsp" flush="true"/>
-<script src="JS/booking.js"></script>
+<script src="JS/Createmeeting.js"></script>
 
+<script>
+    $(document).ready(function()
+    {
+
+
+        $("#meetingtype").change(function()
+        {
+            if($(this).val() == "Team")
+            {
+                $("#add_fields_placeholderdiv").show();
+                $("#add_fields_placeholderinput").show();
+            }
+            else
+            {
+                $("#add_fields_placeholderdiv").hide();
+                $("#add_fields_placeholderinput").hide();
+                document.getElementById("add_fields_placeholderinput").value = "2";
+            }
+        });
+        $("#add_fields_placeholderdiv").hide();
+        $("#add_fields_placeholderinput").hide();
+
+
+    });
+</script>
 </body>
 </html>
 <!-- http://en.wikipedia.org/wiki/List_of_tz_database_time_zones -->

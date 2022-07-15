@@ -131,7 +131,7 @@ public class MeetingDAO extends HttpServlet {
                 meeting.setTitle(rs.getString("Title"));
                 meeting.setMeetingUrl(rs.getString("meetingurl"));
                 meeting.setDuration(rs.getString("Duration"));
-
+                meeting.setCapacity(rs.getString("capacity"));
                 meeting.setUserId(rs.getString("user_id"));
             }
 
@@ -163,7 +163,7 @@ public class MeetingDAO extends HttpServlet {
             out.println(meeting.getMeetingUrl() + " " + meeting.getDuration() + "  "+ meeting.getMeetingtype() + "  " + meeting.getUserId());
              */
             try (PreparedStatement pstmt = con.prepareStatement(
-                    "INSERT INTO meeting(Timezone,meetingdate,meetingtime,meetingrepeat,meetingdescription,MeetingAvaliablity,Title,meetingurl,Duration,meetingtype,user_id) VALUES(?,?,?,?,?,?,?,?,?,?,?)")) {
+                    "INSERT INTO meeting(Timezone,meetingdate,meetingtime,meetingrepeat,meetingdescription,MeetingAvaliablity,Title,meetingurl,Duration,meetingtype,capacity,user_id) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)")) {
 
                 pstmt.setString(1, meeting.getTimezone());
                 pstmt.setString(2, meeting.getDate());
@@ -176,7 +176,9 @@ public class MeetingDAO extends HttpServlet {
                 pstmt.setString(8, meeting.getMeetingUrl());
                 pstmt.setString(9, meeting.getDuration());
                 pstmt.setString(10, meeting.getMeetingtype());
-                pstmt.setString(11, meeting.getUserId());
+                pstmt.setString(11, meeting.getCapacity());
+                pstmt.setString(12, meeting.getUserId());
+
                 pstmt.executeUpdate();
                 pstmt.close();
 

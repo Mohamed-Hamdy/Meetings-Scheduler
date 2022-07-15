@@ -91,6 +91,7 @@
                 String meetingurl = meetingArray.get(i).getMeetingUrl();
                 String Duration = meetingArray.get(i).getDuration();
                 String meetingtype = meetingArray.get(i).getMeetingtype();
+                String meetingcapacity = meetingArray.get(i).getCapacity();
 
                 //String uid = meetingArray.get(i).getUserId();
                 int meetingid = meetingArray.get(i).getId();
@@ -106,7 +107,7 @@
                         out.println("<h4 class=\"card-subtitle mb-2 text-muted\"> Duration : " + Duration + " Minute Meeting</h4>");
                         out.println("<h6 class=\"card-text mb-2 text-muted\"> Type : " + meetingtype + " Meeting</h5>");
                         out.println("<h6 class=\"card-title mb-2 text-muted\"> TimeZone : " + Timezone + "</h6>");
-                        //out.println("<h6 class=\"card-title mb-2 text-muted\"> userid : " + userid + "</h6>");
+                        out.println("<h6 class=\"card-title mb-2 text-muted\"> Meeting Capacity : " + meetingcapacity + "</h6>");
                         out.println("<div class=\"text-right\"> <button href=\"#\" class=\"btn btn-primary \">Show Details</button></div>");
                         out.println("</div>");
                         out.println("</div>");
