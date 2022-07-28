@@ -11,23 +11,31 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import static java.lang.System.exit;
+
 @WebServlet(name = "SlotChecker", value = "/SlotChecker")
 public class SlotChecker extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EmailValidator</title>");
+            out.println("<title>Servlet SlotChecker</title>");
             out.println("</head>");
             out.println("<body>");
 
             int id = 0;
             //String email_session = request.getSession().getAttribute("username").toString();
+            //String SlotDate = request.getParameter("SlotDate");
+            String SlotTime = request.getParameter("SlotTime");
             String SlotDate = request.getParameter("SlotDate");
+            String user_id = request.getSession().getAttribute("Userid").toString();
+            //System.out.println(SlotTime + " Date  " + SlotDate);
+            //System.out.println("user id " + user_id);
 
+            //exit(0);
             try {
                 Class.forName("com.mysql.jdbc.Driver");
 
@@ -36,26 +44,29 @@ public class SlotChecker extends HttpServlet {
 
                 PreparedStatement pstmt = null;
 
-                pstmt = con.prepareStatement("SELECT * FROM user WHERE email=? ");
-                pstmt.setString(1, SlotDate);
+                pstmt = con.prepareStatement("SELECT * FROM meeting WHERE user_id=? AND meetingdate =? AND meetingtime =?");
+                pstmt.setString(1, user_id);
+                pstmt.setString(2, SlotDate);
+                pstmt.setString(3, SlotTime);
                 ResultSet rs = pstmt.executeQuery();
 
                 if (rs.next()) {
-
+                    //System.out.println("This Slot is Taken Before");
                     out.println("<span class=\"text-danger text-sm\">"
-                            + "This e-mail is already in use"
+                            + "This Slot is Taken Before"
                             + "</span>");
                     String msg = "EIDB";
                     HttpSession session = request.getSession();
-                    session.setAttribute("ValidatorEmailMSG", msg);
+                    session.setAttribute("SlotCheckerMSG", msg);
                 } else {
+                    //System.out.println("This Slot is available");
 
                     out.print("<span class=\"text-success\">"
-                            + "This e-mail is available"
+                            + "This Slot is available"
                             + "</span>");
                     String msg = "";
                     HttpSession session = request.getSession();
-                    session.setAttribute("ValidatorEmailMSG", msg);
+                    session.setAttribute("SlotCheckerMSG", msg);
 
                 }
                 con.close();

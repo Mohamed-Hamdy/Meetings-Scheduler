@@ -21,42 +21,56 @@
 
 $(document).ready(function () {
     //grab target
-    var validator = $('#Date');
+    var timevalidator = $('#timeValidator');
+    var datevalidator = $('#dateValidator');
 
-    $('#inputEmail4').blur(function () {
+    $('#inputTime4').blur(function () {
         //grab value from input field
 
-        var SlotDate = $('#inputDate4').val();
-        if (SlotDate != "") {
+        const SlotDate = $('#inputDate4').val();
+        const SlotTime = $('#inputTime4').val();
+
+        //console.log(SlotTime);
+        if (SlotTime != "") {
             //post to servlet
             $.ajax({
                 type: "post",
                 url: "SlotChecker",
                 data: {
-                    'SlotDate': SlotDate
+                    'SlotTime': SlotTime,
+                    'SlotDate':SlotDate
                 },
                 success: function (response) {
-                    validator.fadeIn(1000);
-                    validator.html(response);
+                    timevalidator.fadeIn(1000);
+                    timevalidator.html(response);
+
+                    datevalidator.fadeIn(1000);
+                    datevalidator.html(response);
 
                 }
             });
         } else {
-            validator.fadeIn(1000);
-            validator.html(" ");
+            timevalidator.fadeIn(1000);
+            timevalidator.html(" ");
+
+            datevalidator.fadeIn(1000);
+            datevalidator.html(" ");
         }
 
     });
     //when on focus, clean previous output
-    $('#inputEmail4').focus(function () {
-        validator.fadeOut(1000);
+    $('#inputTime4').focus(function () {
+        timevalidator.fadeOut(1000);
+        datevalidator.fadeOut(1000);
 
     });
 });
 
 
+
 //on submit, hide output for validator
 $('#joinSubmitButton').click(function () {
-    $('#emailValidator').hide();
+    $('#timeValidator').hide();
+    $('#datevalidator').hide();
 
 });

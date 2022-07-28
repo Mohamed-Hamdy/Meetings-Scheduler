@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-lg-8  card bg-light order-lg-first order-last" style="margin-top:45px; margin-left: 15%;">
             <form name="gInfo" class="d-flex flex-column needs-validation"
-                  style="height: 100%;" action="createmeeting" method="get"
+                  style="height: 100%;" action="Editmeeting" method="get"
                   novalidate>
                 <%
                     if (session.getAttribute("error") != null) {
@@ -36,15 +36,43 @@
                     }
                 %>
 
-                <h4 class="mt-4">Create Meeting</h4>
+
+                <%
+                    String meetingid = request.getParameter("meetingid");
+                    String timezone = request.getParameter("timezone");
+                    String Date = request.getParameter("meetingdate");
+
+                    String time = request.getParameter("meetingtime");
+                    String title = request.getParameter("title");
+
+                    String description = request.getParameter("meetingdescription");
+                    String duration = request.getParameter("Duration");
+
+                    String repeat = request.getParameter("meetingrepeat");
+                    String meetingtype = request.getParameter("meetingtype");
+
+                    String meetingcapacity = request.getParameter("meetingcapacity");
+                    String meetingurl = request.getParameter("meetingurl");
+
+                    //System.out.println(meetingtype + " " +meetingcapacity );
+                %>
+
+                <h4 class="mt-4">Edit Your Meeting Info</h4>
                 <hr>
                 <div class="form-row">
+                    <input type="hidden" class="form-control" id="meetingid" name="meetingid" value="<%=meetingid%>">
+                    <input type="hidden" class="form-control" id="meetingurl" name="meetingurl" value="<%=meetingurl%>">
+
+                    <input type="hidden" class="form-control" id="hiddenmeetingtype" name="hiddenmeetingtype" value="<%=meetingtype%>">
+                    <input type="hidden" class="form-control" id="hiddenmeetingcapacity" name="hiddenmeetingcapacity" value="<%=meetingcapacity%>">
+
+
                     <div class="form-group col-md-6">
                         <%--@declare id="tz"--%><label for="timezone">Timezone</label>
 
                         <input type="text"
                                class="form-control" id="timezone" name="timezone"
-                               placeholder="Continent/Timezone" list="tz" value=""
+                               placeholder="Continent/Timezone" list="tz" value="<%=timezone%>"
                                required>
                         <div class="valid-feedback">Looks good!</div>
                         <div class="invalid-feedback">What is your Timezone?</div>
@@ -57,7 +85,7 @@
                             <input type="date"
                                class="form-control" id="inputDate4"
                                name="Date"
-                               placeholder="YYYY-MM-DD"  min="<%= df.format(new java.util.Date()) %>" value=""
+                               placeholder="YYYY-MM-DD"  min="<%=Date%>" value="<%=Date%>"
                                required>
                             <div class="date-val" id="dateValidator"></div>
                             <div class="invalid-feedback">Check your input please.
@@ -71,7 +99,7 @@
                                class="form-control" id="inputTime4"
                                name="time"
                                placeholder="HH:MM"
-                               value="" required>
+                               value="<%=time%>" required>
                             <div class="time-val" id="timeValidator"></div>
                             <div class="invalid-feedback">Please provide a valid
                             time.
@@ -81,7 +109,7 @@
                         <%--@declare id="title"--%><label for="title">Title</label>
                         <input type="text"
                                class="form-control" id="title" name="title"
-                               placeholder="My awesome meeting" type="text" value="" required>
+                               placeholder="My awesome meeting" type="text" value="<%=title%>" required>
                         <div class="valid-feedback">Super!</div>
                         <div class="invalid-feedback">Please Don't forget meeting title.
                         </div>
@@ -91,7 +119,7 @@
                     <label for="Description">Description</label>
                     <input type="text"
                            class="form-control" id="Description"
-                           name="description"
+                           name="description" value="<%=description%>"
                            placeholder="Meeting description"
                            required>
                     <div class="valid-feedback">So good!</div>
@@ -103,7 +131,7 @@
                         <label for="inputDuration">Duration</label>
                         <input type="number"
                                class="form-control" id="inputDuration" name="duration"
-                               value="" placeholder="Enter Meeting Duration in Minutes"
+                               value="<%=duration%>" placeholder="Enter Meeting Duration in Minutes"
                                min="30" max="120"
                                required>
 
@@ -116,7 +144,8 @@
                     <div class="form-group col-md-6">
                         <%--@declare id="inputrepeat"--%><label for="inputRepeat">Repeat?</label>
                         <select name="repeat" class="form-control" aria-label="Default select example">
-                            <option selected>Never</option>
+                            <option selected><%=repeat%></option>
+                            <option value="Never">Never</option>
                             <option value="Daily">Daily</option>
                             <option value="Weekly">Weekly</option>
                             <option value="Monthly">Monthly</option>
@@ -125,7 +154,8 @@
                     <div class="form-group col-md-8">
                         <%--@declare id="inputtype"--%><label for="inputtype">Meeting Type</label>
                         <select name="meetingtype" id="meetingtype" class="form-control" aria-label="Default select example">
-                            <option selected>One to One</option>
+                            <option selected><%=meetingtype%></option>
+                            <option value="One to One">One to One</option>
                             <option value="Team">Team</option>
                         </select>
                     </div>
@@ -135,7 +165,7 @@
 
                         <input type="number"
                                class="form-control" name="add_fields_placeholderValue" id="add_fields_placeholderinput"
-                               value="2" placeholder="Enter Your Meeting Capacity" min="2" max="50"
+                               value="<%=meetingcapacity%>" placeholder="Enter Your Meeting Capacity" min="2" max="50"
                                required>
 
                         <div class="valid-feedback">Good</div>
@@ -146,7 +176,7 @@
                 </div>
 
                 <div class="my-auto w-100 ">
-                    <button type="hidden" id="joinSubmitButton" class="btn btn-primary btn-block mb-2">Create Meeting
+                    <button type="hidden" id="joinSubmitButton" class="btn btn-primary btn-block mb-2">Submit
                     </button>
                 </div>
             </form>

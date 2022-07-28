@@ -193,144 +193,81 @@ public class MeetingDAO extends HttpServlet {
     }
 
 
-//    public ArrayList<Meeting> checkFunction(PrintWriter out, Date desiredCheckIn, Date desiredCheckOut, String location, int numberOfGuest, String filter) {
-//
-////        out.println("From HotelDAO_function");
-////        out.println(desiredCheckIn);
-////        out.println(desiredCheckOut);
-////        out.println(location);
-////        out.println(numberOfGuest);
-//        ArrayList<Meeting> meetings = new ArrayList<Meeting>();
-//        int controller = numberOfGuest;
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String url = "jdbc:mysql://localhost:3306/meeting-scheduler";
-//            String user = "root";
-//            String password = "root";
-//            Connection con = null;
-//            int hotelNumber = 0;
-//            boolean meeting_availability;
-//            boolean meetingvailable;
-//            String name = "";
-//            int values[] = new int[2];
-//            boolean meeting_vailable = false;
-//            con = DriverManager.getConnection(url, user, password);
-//            Statement Stmt = con.createStatement();
-//            ResultSet filter_rs = Stmt.executeQuery("SELECT * FROM meeting ORDER BY "+ filter +" DESC");
-//            
-//            while (filter_rs.next()){
-//                String DBLocation = filter_rs.getString("hotel_Location");
-//                int capacity = filter_rs.getInt("max_allowance");
-//
-//                if ((location.equals(DBLocation)) && (numberOfGuest == capacity )) {
-//                    // First check if room with assigned roomNumber is FREE
-//                    hotelNumber = filter_rs.getInt("hotelid");
-//                    hotel_availability = filter_rs.getBoolean("hotel_availability");
-//                    //name = rs.getString("hotel_name");
-//
-//                    if (hotel_availability == true) {
-//                        values = checkusingDate(out, hotelNumber, desiredCheckIn, desiredCheckOut, location);
-//                        hotel_vailable = (values[1] == 100); // convert from int to boolean
-//                        hotel_vailable = true;
-//                    } else {
-//                        hotel_vailable = false;
-//                    }
-////                out.println("id :" + values[0]);
-////                out.println("<br>");
-////                out.println("int valid : " +values[1]);
-////                out.println("<br>");
-////                out.println("bool valid :" + hotel_vailable);
-//
-//                    if (hotel_vailable == true && (values[0] != 0)) {
-//                        HotelDAO rD = new HotelDAO();
-//                        hotels.add(rD.getHotel(values[0]));
-//                    }
-//                }
-//            }
-//
-//            //hotelid = hotels.get(i).getHotelNumber();
-////            HttpSession sessionid = request.getSession();
-////            sessionid.setAttribute("hotelid", hotelid);
-//            //System.out.println(hotelNumber);
-//            con.close();
-//
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }
-//
-//        return hotels;
-//    }
-//
-//    public int[] checkusingDate(PrintWriter out, int desiredRoom, Date desiredCheckIn, Date desiredCheckOut, String Location) {
-//        // Method to avoid creating a booking on a room that is already booked
-//        // Based on date
-//        boolean HotelAvailable = true;
-//        int isValid = 0;
-//        int id = 0;
-//
-//        try {
-//            Class.forName("com.mysql.jdbc.Driver");
-//            String url = "jdbc:mysql://localhost:3306/hrsystem";
-//            String user = "root";
-//            String password = "root";
-//            Connection con = null;
-//
-//            con = DriverManager.getConnection(url, user, password);
-//
-//            String query = "SELECT b.hotelid , b.hotel_availability FROM hotel AS b WHERE"
-//                    /*
-//			Date equal or in between
-//                     */
-//                    + " (b.hotelid = ? "
-//                    + "AND b.check_in <= ? "
-//                    + "AND b.check_out >= ?) "
-//                    /*
-//                        Date starting before checkIn and concluding on anytime after checkIn
-//                     */
-//                    + "OR "
-//                    + "(b.hotelid = ? "
-//                    + "AND b.check_in >= ? "
-//                    + "AND b.check_in < ?) "
-//                    // Date starting after checkIn but before checkOut
-//                    + "OR "
-//                    + "(b.hotelid = ? "
-//                    + "AND b.check_in < ? "
-//                    + "AND b.check_out > ?)";
-//
-//            PreparedStatement pst = con.prepareStatement(query);
-//            pst.setInt(1, desiredRoom);
-//            pst.setDate(2, desiredCheckIn);
-//            pst.setDate(3, desiredCheckOut);
-//            pst.setInt(4, desiredRoom);
-//            pst.setDate(5, desiredCheckIn);
-//            pst.setDate(6, desiredCheckOut);
-//            pst.setInt(7, desiredRoom);
-//
-//            pst.setDate(8, desiredCheckIn);
-//            pst.setDate(9, desiredCheckIn);
-//            pst.execute();
-//            ResultSet rs = pst.getResultSet();
-//            while (rs.next()) {
-//                isValid = rs.getInt("hotel_availability");
-//                id = rs.getInt("hotelid");
-//                //out.println(rs.getInt(rs.getInt("is_valid")));
-////                out.println(name);
-////                out.println(isValid);
-////                out.println("<br>");
-//                if (isValid == 1) {
-//                    HotelAvailable = false;
-//                }
-//                if (isValid == 0) {
-//                    continue;
-//                }
-//            }
-//            con.close();
-//            pst.close();
-//
-//        } catch (Exception ex) {
-//            System.out.println(ex);
-//        }
-//
-//        return new int[]{id, isValid};
-//    }
+    public void updateMeeting(Meeting meeting , String meetingID) {
+        try {
+            //out.println("From add meeting");
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/meetingscheduler";
+            String user = "root";
+            String password = "root";
+            Connection con = null;
+
+            con = DriverManager.getConnection(url, user, password);
+            HttpServletRequest request = null;
+            //System.out.println("from update");
+
+
+
+            PreparedStatement pstmt = con.prepareStatement(
+                    "UPDATE meeting SET Timezone = ?, meetingdate = ?,  meetingtime = ? , meetingrepeat = ? , meetingdescription = ? , Title = ?, Duration = ?, capacity = ? , meetingtype = ?  WHERE id = ? ");
+
+            pstmt.setString(1, meeting.getTimezone());
+            pstmt.setString(2, meeting.getDate());
+            pstmt.setString(3, meeting.getTime());
+            pstmt.setString(4, meeting.getRepeat());
+            pstmt.setString(5, meeting.getDescription());
+            pstmt.setString(6, meeting.getTitle());
+
+            pstmt.setString(7, meeting.getDuration());
+            pstmt.setString(8, meeting.getCapacity());
+            pstmt.setString(9, meeting.getMeetingtype());
+            pstmt.setString(10, meetingID);
+            //System.out.println("before execute");
+
+            pstmt.executeUpdate();
+            //System.out.println("after execute");
+
+
+            pstmt.close();
+
+            con.close();
+            //System.out.println("Done update");
+
+        } catch (Exception ex) {
+            out.println(ex);
+        }
+    }
+
+    public void deleteMeeting(String meetingID) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            String url = "jdbc:mysql://localhost:3306/meetingscheduler";
+            String user = "root";
+            String password = "root";
+            Connection con = null;
+
+            con = DriverManager.getConnection(url, user, password);
+
+            PreparedStatement stmt = con.prepareStatement("DELETE from meetingroom where meeting_id=?");
+            stmt.setString(1, meetingID);
+            int i = stmt.executeUpdate();
+
+            PreparedStatement stmt1 = con.prepareStatement("DELETE from attendee where meeting_id=?");
+            stmt1.setString(1, meetingID);
+            int i1 = stmt1.executeUpdate();
+
+            PreparedStatement stmt2 = con.prepareStatement("DELETE from calender where meeting_id=?");
+            stmt2.setString(1, meetingID);
+            int i2 = stmt2.executeUpdate();
+
+            PreparedStatement stmt3 = con.prepareStatement("DELETE from meeting where id=?");
+            stmt3.setString(1, meetingID);
+            int i3 = stmt3.executeUpdate();
+
+            con.close();
+            //out.println("Deleted");
+        } catch (Exception ex) {
+            out.println(ex);
+        }
+    }
 }

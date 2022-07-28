@@ -47,13 +47,12 @@
             Class.forName("com.mysql.jdbc.Driver");
             // Get a Connection to the database
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/meetingscheduler", "root", "root");
-            //connection_1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/hrsystem", "root", "root");
             String id_session = request.getSession().getAttribute("Userid").toString();
             int userid = Integer.valueOf(id_session);
-            String uname =request.getSession().getAttribute("username").toString();
+            String uname = request.getSession().getAttribute("username").toString();
 
-            String sql ="select id from meeting where user_id = '" + userid + "' ;";
-                    Statement s = connection.createStatement();
+            String sql = "select id from meeting where user_id = '" + userid + "' ;";
+            Statement s = connection.createStatement();
             s.executeQuery(sql);
             rs = s.getResultSet();
             int index = 0;
@@ -98,42 +97,85 @@
                 HttpSession meetingsession = request.getSession();
                 meetingsession.removeAttribute("error");
                 meetingsession.setAttribute("meetingid", meetingid);
+                String meetingIDstr = String.valueOf(meetingid);
+                if (id_session != null) {
+                    //out.println(userid + " " + meetingid);
 
-                if(id_session != null) {
-                        //out.println(userid + " " + meetingid);
-                        out.println("<div class=\"card mb-4\">");
-                        out.println("<div class=\"card-body\">");
-                        out.println("<h3 class=\"card-title  text-center\">" + title + "</h3>");
-                        out.println("<h4 class=\"card-subtitle mb-2 text-muted\"> Duration : " + Duration + " Minute Meeting</h4>");
-                        out.println("<h6 class=\"card-text mb-2 text-muted\"> Type : " + meetingtype + " Meeting</h5>");
-                        out.println("<h6 class=\"card-title mb-2 text-muted\"> TimeZone : " + Timezone + "</h6>");
-                        out.println("<h6 class=\"card-title mb-2 text-muted\"> Meeting Capacity : " + meetingcapacity + "</h6>");
-                        out.println("<div class=\"text-right\"> <button href=\"#\" class=\"btn btn-primary \">Show Details</button></div>");
-                        out.println("</div>");
-                        out.println("</div>");
-                    }
+                    out.println("<div class=\"card mb-4\">");
 
-                    else{
-                        out.println("<div class=\"jumbotron marginx-10\">");
-                        out.println("<h1 class=\"display-4\">Join the family!</h1>\n" + "");
+                    out.println("<div class=\"card-body\">");
 
-                        out.println("<p class=\"lead\">In just under one minute join the family, get\n" + "weekly rewards and invitations for special events.</p>");
-                        out.println("<hr class=\"my-4\">\n" + "");
 
-                        out.println("<p>\n" +
-                                "                <em>Did you know that our Hotel donates 10% of annual revenue to\n" +
-                                "                    fire fighters and forest conservationists?</em>\n" +
-                                "            </p>\n" +
-                                "            ");
-                        out.println("<a class=\"btn btn-primary btn-lg\" href=\"Join.jsp\" role=\"button\">Learn\n" +
-                                "                more</a>\n" +
-                                "        ");
 
-                        out.println("</div>");
 
-                    }
+
+
+                    out.println("<h3 class=\"card-title  text-center\">" + title + "</h3>");
+                    out.println("<h4 class=\"card-subtitle mb-2 text-muted\"> Duration : " + Duration + " Minute Meeting</h4>");
+                    out.println("<h6 class=\"card-text mb-2 text-muted\"> Type : " + meetingtype + " Meeting</h5>");
+                    out.println("<h6 class=\"card-title mb-2 text-muted\"> TimeZone : " + Timezone + "</h6>");
+                    out.println("<h6 class=\"card-title mb-2 text-muted\"> Meeting Capacity : " + meetingcapacity + "</h6>");
+
+                    out.println("<form  onsubmit=\"return confirm('Are you sure to delete this meeting?');\" style =\"position:absolute;right:1.7%; bottom:60%;\" action=\"deletemeetingServlet\" method=\"post\">");
+                    out.println("<input type=\"hidden\" name=\"meetingid\" value=\"" + meetingIDstr + "\"/>");
+                    out.println("<div class=\"text-right\"> <button style=\"padding:6px 50px;\" class=\"btn btn-outline-danger \">Delete Meeting</button></div>");
+                    out.println("</form>");
+
+                    out.println("<form style =\"position:absolute;right:1.7%; bottom:35%;\" action=\"EditMeeting.jsp\" method=\"post\">");
+                    out.println("<input type=\"hidden\" name=\"meetingid\" value=\"" + meetingIDstr + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"timezone\" value=\"" + Timezone + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingdate\" value=\"" + meetingdate + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingtime\" value=\"" + meetingtime + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingrepeat\" value=\"" + meetingrepeat + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingdescription\" value=\"" + meetingdescription + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"title\" value=\"" + title + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"Duration\" value=\"" + Duration + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingtype\" value=\"" + meetingtype + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingcapacity\" value=\"" + meetingcapacity + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingurl\" value=\"" + meetingurl + "\"/>");
+                    out.println("<div  class=\"text-right\"> <button style=\"padding:6px 60px;\" class=\"btn btn-outline-secondary \">Edit Meeting </button></div>");
+                    out.println("</form>");
+
+
+                    out.println("<form style =\"position:absolute;right:1.7%; bottom:10%;\" action=\"ShowMeetingDetails.jsp\" method=\"post\">");
+                    out.println("<input type=\"hidden\" name=\"meetingid\" value=\"" + meetingIDstr + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"timezone\" value=\"" + Timezone + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingdate\" value=\"" + meetingdate + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingtime\" value=\"" + meetingtime + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingrepeat\" value=\"" + meetingrepeat + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingdescription\" value=\"" + meetingdescription + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"title\" value=\"" + title + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"Duration\" value=\"" + Duration + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingtype\" value=\"" + meetingtype + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingcapacity\" value=\"" + meetingcapacity + "\"/>");
+                    out.println("<input type=\"hidden\" name=\"meetingurl\" value=\"" + meetingurl + "\"/>");
+
+                    out.println("<div class=\"text-right\"> <button style=\"padding:6px 59px;\" class=\"btn btn-outline-primary \">Show Details</button></div>");
+
+                    out.println("</form>");
+
+                    out.println("</div>");
+                    out.println("</div>");
+                } else {
+                    out.println("<div class=\"jumbotron marginx-10\">");
+                    out.println("<h1 class=\"display-4\">Join the family!</h1>\n" + "");
+
+                    out.println("<p class=\"lead\">In just under one minute join the family, get\n" + "weekly rewards and invitations for special events.</p>");
+                    out.println("<hr class=\"my-4\">\n" + "");
+
+                    out.println("<p>\n" +
+                            "                <em>Did you know that our Hotel donates 10% of annual revenue to\n" +
+                            "                    fire fighters and forest conservationists?</em>\n" +
+                            "            </p>\n" +
+                            "            ");
+                    out.println("<a class=\"btn btn-primary btn-lg\" href=\"Join.jsp\" role=\"button\">Learn\n" +
+                            "                more</a>\n" +
+                            "        ");
+
+                    out.println("</div>");
+
+                }
             }
-
         } catch (NullPointerException e) {
             M = null;
             meetingArray.add(M);
@@ -145,7 +187,22 @@
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <jsp:include page="Footer.jsp" flush="true"/>
 <script src="JS/rooms.js"></script>
+<script>
+    function validate(form) {
 
+        // validation code here ...
+
+
+        if(!valid) {
+            alert('Please correct the errors in the form!');
+            return false;
+        }
+        else {
+            return confirm('Do you really want to submit the form?');
+        }
+    }
+</script>
+<form onsubmit="return validate(this);">
 
 </body>
 </html>

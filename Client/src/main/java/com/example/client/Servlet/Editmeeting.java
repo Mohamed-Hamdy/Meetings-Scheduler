@@ -2,18 +2,20 @@ package com.example.client.Servlet;
 
 import com.example.client.DataBase.MeetingDAO;
 import com.example.client.Program.Meeting;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
-import static java.lang.System.exit;
-import static java.lang.System.out;
-
-@WebServlet(name = "createmeeting", value = "/createmeeting")
-public class createmeeting extends HttpServlet {
+@WebServlet(name = "Editmeeting", value = "/Editmeeting")
+public class Editmeeting extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
@@ -40,6 +42,9 @@ public class createmeeting extends HttpServlet {
             //Stmt = Con.createStatement();
             //Select_Stmt = Con.createStatement();
 
+           String meetingid = request.getParameter("meetingid");
+           String sessionmeetingtype = request.getParameter("hiddenmeetingtype");
+
             String timezone = request.getParameter("timezone");
             String Date = request.getParameter("Date");
 
@@ -52,6 +57,7 @@ public class createmeeting extends HttpServlet {
             String repeat = request.getParameter("repeat");
             String meetingtype = request.getParameter("meetingtype");
             String id_session = request.getSession().getAttribute("Userid").toString();
+
 
             //out.println("id seesion " + id_session);
             //String uname = String.valueOf(session.getAttribute("username"));
@@ -72,6 +78,7 @@ public class createmeeting extends HttpServlet {
 
                 Meeting meeting;
                 meeting = new Meeting();
+                meeting.setId(Integer.parseInt(meetingid));
                 meeting.setTimezone(timezone);
                 meeting.setDate(Date);
                 meeting.setTime(time);
@@ -85,8 +92,9 @@ public class createmeeting extends HttpServlet {
                 meeting.setUserId(id_session);
                 meeting.setCapacity(meetingCapacity);
                 MeetingDAO newGD = new MeetingDAO();
+                //System.out.println("before update");
 
-                newGD.addMeeting(meeting);
+                newGD.updateMeeting(meeting , meetingid);
 
             }else{
                 String error = "e";
@@ -108,7 +116,11 @@ public class createmeeting extends HttpServlet {
             session.setAttribute("Date", Date);
 
             Con.close();
-            response.sendRedirect("meetingroom.jsp");
+            if(sessionmeetingtype.equals(meetingtype) ){
+                response.sendRedirect("meetings.jsp");
+            }else {
+                response.sendRedirect("meetingroom.jsp");
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
