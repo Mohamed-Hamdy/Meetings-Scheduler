@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`user` (
   `type` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 55
+AUTO_INCREMENT = 58
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`meeting` (
     FOREIGN KEY (`user_id`)
     REFERENCES `meetingscheduler`.`user` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 79
+AUTO_INCREMENT = 104
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`attendee` (
     FOREIGN KEY (`meeting_id`)
     REFERENCES `meetingscheduler`.`meeting` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 32
+AUTO_INCREMENT = 84
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`meetingroom` (
     FOREIGN KEY (`meeting_id`)
     REFERENCES `meetingscheduler`.`meeting` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 23
+AUTO_INCREMENT = 44
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `meetingscheduler`.`setavailabledays` (
     FOREIGN KEY (`user_id`)
     REFERENCES `meetingscheduler`.`user` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 17
+AUTO_INCREMENT = 21
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
