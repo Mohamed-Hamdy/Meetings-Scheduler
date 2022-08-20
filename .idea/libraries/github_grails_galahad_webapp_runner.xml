@@ -1,0 +1,40 @@
+<component name="libraryTable">
+  <library name="github.grails.galahad.webapp.runner" type="repository">
+    <properties maven-id="com.github.grails-galahad:webapp-runner:7.0.40" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/grails-galahad/webapp-runner/7.0.40/webapp-runner-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/7.0.40/tomcat-embed-core-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-logging-juli/7.0.40/tomcat-embed-logging-juli-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.40/tomcat-embed-jasper-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jdt/core/compiler/ecj/4.2.2/ecj-4.2.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-jasper/7.0.40/tomcat-jasper-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-servlet-api/7.0.40/tomcat-servlet-api-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-juli/7.0.40/tomcat-juli-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-el-api/7.0.40/tomcat-el-api-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-api/7.0.40/tomcat-api-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-util/7.0.40/tomcat-util-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-jasper-el/7.0.40/tomcat-jasper-el-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-jsp-api/7.0.40/tomcat-jsp-api-7.0.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/ru/zinin/tomcat-redis-session/0.5/tomcat-redis-session-0.5.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/redis/clients/jedis/2.1.0/jedis-2.1.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-pool/commons-pool/1.6/commons-pool-1.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/beust/jcommander/1.27/jcommander-1.27.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.3/commons-io-2.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/de/javakaffee/msm/memcached-session-manager-tc7/1.6.3/memcached-session-manager-tc7-1.6.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/de/javakaffee/msm/memcached-session-manager/1.6.3/memcached-session-manager-1.6.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/spy/spymemcached/2.7.3/spymemcached-2.7.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jboss/netty/netty/3.2.0.Final/netty-3.2.0.Final.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/jettison/jettison/1.1/jettison-1.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.5/commons-codec-1.5.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina/7.0.23/tomcat-catalina-7.0.23.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-annotations-api/7.0.23/tomcat-annotations-api-7.0.23.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-catalina-ha/7.0.23/tomcat-catalina-ha-7.0.23.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-tribes/7.0.23/tomcat-tribes-7.0.23.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/tomcat-coyote/7.0.23/tomcat-coyote-7.0.23.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/annotations/1.3.9/annotations-1.3.9.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
