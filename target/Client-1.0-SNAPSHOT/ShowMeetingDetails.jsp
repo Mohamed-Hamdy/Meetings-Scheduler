@@ -178,11 +178,9 @@
 
                     <div class="form-group col-md-8">
                         <%--@declare id="inputtype"--%><label for="inputtype">Meeting URL</label>
-                        <select name="meetingurl" id="meetingurl" class="form-control"
-                                aria-label="Default select example" disabled="disabled">
-                            <option selected><%=meetingurl%>
-                            </option>
-                        </select>
+                        <input name="meetingurl" id="meetingurl" class="form-control"
+                                aria-label="Default select example" value="<%=meetingurl%>" readonly>
+                        </input>
                     </div>
                 </div>
 

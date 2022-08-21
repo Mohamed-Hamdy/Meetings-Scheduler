@@ -156,6 +156,7 @@
     <orderEntry type="library" name="Maven: dev.failsafe:failsafe:3.2.4" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-safari-driver:4.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-support:4.3.0" level="project" />
-    <orderEntry type="library" name="github.jsimone.webapp.runner" level="project" />
+    <orderEntry type="library" name="mysql.connector.java" level="project" />
+    <orderEntry type="library" name="activation" level="project" />
   </component>
 </module>

@@ -2,18 +2,30 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="Client:war" />
+      <artifact name="Client:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34accd2e-75e7-42ed-8525-56fe18638847" name="Changes" comment="" />
+    <list default="true" id="3a03ed9e-7878-4c6a-8c87-111cbe2803d6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Jsp File" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -28,53 +40,68 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="2DcstV2Kha12Gc2KveI1tYA9vMC" />
+  <component name="ProjectId" id="2AiAsJiqULjb6x3KH4WAtsVnfar" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/moham/Desktop/Meeting project/Meeting Scheduler",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.33333334",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Meeting Scheduler/jars/mysql-connector-java-5.1.48.jar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.33333334&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propDebugger&quot;
   }
-}]]></component>
-  <component name="RunManager">
-    <configuration name="Tomcat 10.0.22" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.22" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="UPDATING_POLICY" value="restart-server" />
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Meeting Scheduler\Client\src\main\webapp" />
+      <recent name="E:\Meeting Scheduler\Client\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.client.Servlet" />
+      <recent name="com.example.client.DataBase" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.0.22">
+    <configuration name="All in Client" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Client" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 10.0.22" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.22" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
       <deployment>
-        <artifact name="Client:war">
+        <artifact name="Client:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/Client_war" />
+            <option name="CONTEXT_PATH" value="/Client_war_exploded" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="f7ffa558-3f1f-49cf-a61e-bceba3ab3f69" />
+        <option name="BASE_DIRECTORY_NAME" value="ed843796-e862-4b07-9fa4-64053a026850" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -82,7 +109,7 @@
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="64265" />
+        <option name="DEBUG_PORT" value="55434" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -147,24 +174,69 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="Client:war" />
+          <artifact name="Client:war exploded" />
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in Client" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="34accd2e-75e7-42ed-8525-56fe18638847" name="Changes" comment="" />
-      <created>1661009923503</created>
+      <changelist id="3a03ed9e-7878-4c6a-8c87-111cbe2803d6" name="Changes" comment="" />
+      <created>1655482243529</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1661009923503</updated>
-      <workItem from="1661009924730" duration="2299000" />
+      <updated>1655482243529</updated>
+      <workItem from="1655482244904" duration="3253000" />
+      <workItem from="1655486181011" duration="3505000" />
+      <workItem from="1656170389330" duration="24990000" />
+      <workItem from="1656253367833" duration="10965000" />
+      <workItem from="1656333414725" duration="34150000" />
+      <workItem from="1656509598997" duration="7190000" />
+      <workItem from="1656517363939" duration="33390000" />
+      <workItem from="1656620582037" duration="2940000" />
+      <workItem from="1656623893305" duration="1077000" />
+      <workItem from="1656625167394" duration="3827000" />
+      <workItem from="1656641402520" duration="4021000" />
+      <workItem from="1656645836104" duration="2218000" />
+      <workItem from="1656685418663" duration="18426000" />
+      <workItem from="1656709209480" duration="408000" />
+      <workItem from="1657443946038" duration="10719000" />
+      <workItem from="1657537020672" duration="14009000" />
+      <workItem from="1657711927766" duration="46548000" />
+      <workItem from="1658587458440" duration="1178000" />
+      <workItem from="1658742284005" duration="65904000" />
+      <workItem from="1659813450906" duration="611000" />
+      <workItem from="1659876638703" duration="4980000" />
+      <workItem from="1659969880799" duration="22062000" />
+      <workItem from="1660068995065" duration="12631000" />
+      <workItem from="1660163008391" duration="449000" />
+      <workItem from="1660164265210" duration="4220000" />
+      <workItem from="1660242214027" duration="20550000" />
+      <workItem from="1660282113878" duration="2374000" />
+      <workItem from="1661008855814" duration="851000" />
+      <workItem from="1661009834236" duration="70000" />
+      <workItem from="1661087579683" duration="878000" />
+      <workItem from="1661088917115" duration="1687000" />
+      <workItem from="1661090741023" duration="1890000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
