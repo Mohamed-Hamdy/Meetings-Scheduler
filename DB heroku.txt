@@ -1,0 +1,13 @@
+create table admin (id serial, username text, email text, password text);
+
+create table usertable (id serial, firstname text, lastname text, username text, email text, password text, country text, phone text, Address text, type text);
+
+create table meeting (id serial, Timezone text, meetingdate text, meetingtime text, meetingrepeat text, meetingdescription text, MeetingAvaliablity int, Title text, meetingurl text, Duration text, meetingtype text,capacity text,user_id int);
+
+create table attendee (id serial, email text, name text, meeting_id int);
+
+ create table calender ( idCalender serial, meeting_id int);
+
+ create table meetingroom ( id serial , meeting_id int, attendee_id int);
+
+create table setavailabledays (idsetAvailableDays serial, profilemeetingsurl text, Saturday text, Sunday text, Monday text, Tuesday text, Wednesday text, Thursday text, Friday text, user_id int);
