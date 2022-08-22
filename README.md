@@ -1,30 +1,10 @@
-<h3>Meetings Scheduler</h3></div>
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-      </ul>
-    </li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
-
-
+<h2 align="center">Meetings Scheduler</h2>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <h4>Project Vedio</h4>
-
+<div align="center"><img src="https://github.com/Mohamed-Hamdy/Meetings-Scheduler/blob/Master/project%20run%20gif.gif"/></div>
+<p align="right"><a href="https://github.com/Mohamed-Hamdy/Meetings-Scheduler/blob/Master/project%20vedio.mp4">See Project Vedio</a></p>
 
 <h3>purpose of project</h3> 
 
