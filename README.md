@@ -76,7 +76,7 @@ The system should assist users to plan meetings under the constraints expressed 
 we use intellij IDE and use mysql workbench 8.0 and tomcat server 
 
 
-Note : Meeting room create by two providers, i use this two rooms providers because I encountered many problems with jsp servlet technology in this part (makeing meeting room).
+Note : Meeting room create by two providers, i use this two rooms providers because I encountered many problems with jsp servlet technology in this part (makeing meeting room) so i use this two providers and generate meeting room urls.
 * <a href="https://github.com/amirsanni/conference-call-ratchet">Room Powered by xirsys Cloud Repository</a>
 * <a href="https://github.com/itstaranarora/video-chat-v1">Room Powered by herokuapp Repository</a><br>
 <!-- CONTACT -->
