@@ -1,12 +1,13 @@
-<h2 align="center">Meetings Scheduler</h2>
+<h1 align="center">Meetings Scheduler</h1>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+
 <h4>Project Vedio</h4>
 <div align="center"><img src="https://github.com/Mohamed-Hamdy/Meetings-Scheduler/blob/Master/project%20run%20gif.gif"/></div>
 <p align="right"><a href="https://github.com/Mohamed-Hamdy/Meetings-Scheduler/blob/Master/project%20vedio.mp4">See Project Vedio</a></p>
 
-<h3>purpose of project</h3> 
+<h3>Purpose of project</h3> 
 
 The purpose of the meeting scheduler system is to support the organization of meetings - that is, to determine, for each meeting request, a meeting date and location so that most of the intended participants will effectively participate. The meeting date and location thus be as convenient as possible to all participants. Information about the meeting also be made available as early as possible to all potential participants by email for all meeting participants. The intended system considerably reduce the amount of overhead usually incurred in organizing meetings where potential attendees are distributed over many different places. On another hand, the system reflect as closely as possible the way meetings 
 
